@@ -1,0 +1,11 @@
+#map-container {
+  position: relative;
+  width: 800px;
+  height: 500px;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
