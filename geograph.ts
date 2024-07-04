@@ -122,29 +122,10 @@ export class DashboardComponent {
       this.statesFeatures= states.features; 
       console.log(this.statesFeatures);
 
-      this.statesFeatures.forEach((state: any) => {
-        state.x = state.geometry.coordinates[0];
-        state.y = state.geometry.coordinates[1];
-        state.r = 10;
-      });
-  
-      // Position labels for small states outside the states
-      this.statesFeatures.forEach((state: any) => {
-        if (smallStates.includes(state.properties.name)) {
-          state.labelX = state.x + 20;  // Offset label position
-          state.labelY = state.y - 20;
-        } else {
-          state.labelX = state.x;
-          state.labelY = state.y;
-        }
-      });
 
     const canvas = document.getElementById('canvas') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d');
 
-  
-
- 
       
   if(ctx!==null){
     Chart.register(CategoryScale);
@@ -179,14 +160,6 @@ export class DashboardComponent {
           formatter: ( context: any) => {
             return context.feature.properties.tooltip;
           },
-  },
-  tooltip: {
-    enabled: true,
-    callbacks: {
-      label: function(context: any) {
-        return (context.raw as any).feature.properties.tooltip;
-      }
-    }
   },
 },
   
